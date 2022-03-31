@@ -1,16 +1,16 @@
 ## What is RCASE
 RCASE is a basic survey application. Developed CDD(Component Driven Design) pattern with ReactJs. 
--File Structure
-    -src
-        -components  
-        -core //core as a infrastructure folder
-            --enums
-                --*.enum.js
-            --models
-            --services
-                --api-base.js
-                --*-service.js
-            --utils
+- File Structure
+    - src
+        - components  
+        - core //core as a infrastructure folder
+            - enums
+                - *.enum.js
+            - models
+            - services
+                - api-base.js
+                - *-service.js
+            - utils
 
 ## Available Scripts
 
