@@ -15,19 +15,45 @@ export default class QuestionDetailComponent extends Component{
       }
       componentDidUpdate(prevProps){
         if (this.props.myQuestion !== prevProps.myQuestion){
-
+            
+            console.log('this.props.myQuestion :', this.props.myQuestion);
             this.setState({selectedQuestion:this.props.myQuestion})
+            this.getQuestionDetail(this.props.myQuestion)
         }
 
       }
       getQuestionDetail(url){
-        this._questionService.getQuestionById();
+        this._questionService.getQuestionById(url).then(res=>{
+        console.log('res :', res);
+        let choiceDatatable;
+        if(res.choices){
+          
+          choiceDatatable=res.choices.map(item=>
+            <li  key={item.url}>
+           {item.choice} : {item.votes}
+           <button title={item.choice} onClick={()=>{ this.voteChoise(item.url,item)}}>Vote</button>
+          </li>
+        )
+        this.setState({choiceList:choiceDatatable,questionTitle:res.question})
+      }
+        
+          
+        });
       } 
+      voteChoise(url,choice){
+        this._questionService.voteQuestionChoice(url,choice).then(res=>{
+          this.getQuestionDetail(this.props.myQuestion);
+        });
+      }
       render(){
         if(this.state.selectedQuestion)
         return (
           <div id='question-detail'>
-            {this.state.selectedQuestion}
+            <h4>
+
+            {this.state.questionTitle}
+            </h4>
+            {this.state.choiceList}
           </div>
         )
         else{

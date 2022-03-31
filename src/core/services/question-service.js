@@ -5,11 +5,23 @@ export class QuestionService extends ApiBase{
         super()
     }
     getQuestionList(){
-       return this.get(API.Question,'questions').then(res=>{
+       return this.get(API.Question,'/questions').then(res=>{
             return res
         })
     }
-    getQuestionById(){
-
+    getQuestionById(questionUrl){
+        return this.get(API.Question,questionUrl).then(res=>{
+            return res
+        })
+    }
+    voteQuestionChoice(choiceUrl,model){
+        return this.post(API.Question,choiceUrl,null,model).then(res=>{
+            return res;
+        })
+    }
+    createQuestion(model){
+        return this.post(API.Question,'/questions',null,model).then(res=>{
+            return res;
+        })
     }
 }

@@ -1,3 +1,3 @@
 export const API={
-    Question:'https://polls.apiblueprint.org/'
+    Question:'https://polls.apiblueprint.org'
 }

@@ -4,7 +4,7 @@ import QuestionListComponent from'./components/question-list/question-list'
 
 function App() {
   return (
-    <div>
+    <div className='container-fluid'>
       <QuestionListComponent />
     </div>
   );

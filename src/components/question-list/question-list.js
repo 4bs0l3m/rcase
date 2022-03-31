@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {QuestionService} from '../../core/services/question-service'
 import QuestionDetailComponent from '../question-detail/question-detail'
+import QuestionCreateComponent from '../question-create/question-create'
 
 export default class QuestionListComponent extends Component{
   
@@ -21,10 +22,11 @@ export default class QuestionListComponent extends Component{
         
          this._questionService.getQuestionList().then(res=>{
           questionDatasource=res;
+          console.log('res :', res);
           questionDatatable=questionDatasource.map(item=>
             <li  key={item.url}>
              {item.question}
-             <button title='333' onClick={()=>{ this.setState({selectedQuestion:item.url})}}>asd</button>
+             <button id='item.url' onClick={()=>{ this.setState({selectedQuestion:item.url})}}>Detail</button>
             </li>
           )
           this.setState({questionList:questionDatatable})
@@ -33,12 +35,18 @@ export default class QuestionListComponent extends Component{
      
        render(){
         return (
-          <div id='question-list'>
-            <div>
+          <div id='question-list' className='row'>
+            <div className='col-sm-6'>
             {this.state.questionList}
             </div>
-           
+           <div className='col-sm-6'>
+
             <QuestionDetailComponent  myQuestion={this.state.selectedQuestion}/>
+           </div>
+           <div className='col-sm-12'>
+
+            <QuestionCreateComponent  />
+           </div>
           </div>
         )
       }

@@ -26,4 +26,28 @@ export class ApiBase{
             
         })
     }
+    post(root,url,params,body){
+        
+        if(params){
+
+        }else{
+            params={}
+        }
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(body)
+        };
+        return fetch(root+url,requestOptions).then(res=>{
+            
+            return res.json();
+
+        })
+        .catch(err=>{
+            
+        })
+    }
 }
