@@ -3,7 +3,7 @@ RCASE is a basic survey application. Developed CDD(Component Driven Design) patt
 - File Structure
     - src
         - components  
-        - core //core as a infrastructure folder
+        - core  `//core as a infrastructure folder`
             - enums
                 - *.enum.js
             - models
