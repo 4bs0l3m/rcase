@@ -15,8 +15,6 @@ export default class QuestionDetailComponent extends Component{
       }
       componentDidUpdate(prevProps){
         if (this.props.myQuestion !== prevProps.myQuestion){
-            
-            console.log('this.props.myQuestion :', this.props.myQuestion);
             this.setState({selectedQuestion:this.props.myQuestion})
             this.getQuestionDetail(this.props.myQuestion)
         }
@@ -24,7 +22,6 @@ export default class QuestionDetailComponent extends Component{
       }
       getQuestionDetail(url){
         this._questionService.getQuestionById(url).then(res=>{
-        console.log('res :', res);
         let choiceDatatable;
         if(res.choices){
           

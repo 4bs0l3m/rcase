@@ -15,14 +15,8 @@ export default class QuestionListComponent extends Component{
       fillQuestions(){
         let questionDatasource;
         let questionDatatable;
-        let  clickQuestion=(question)=>{
-          console.log('question :', question);
-          this.setState({selectedQuestion:question})
-        }
-        
          this._questionService.getQuestionList().then(res=>{
           questionDatasource=res;
-          console.log('res :', res);
           questionDatatable=questionDatasource.map(item=>
             <li  key={item.url}>
              {item.question}

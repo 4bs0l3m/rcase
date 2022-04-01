@@ -7,7 +7,7 @@ export default class QuestionCreateComponent extends Component{
         super(props);
         this.state={}
         this._questionService=new QuestionService();
-        //#region fix:Uncaught TypeError: Cannot read property 'setState' of undefined
+        //#region FIX: Uncaught TypeError: Cannot read property 'setState' of undefined
         this.addChoice = this.addChoice.bind(this);
         this.changeQuestionName = this.changeQuestionName.bind(this);
         this.changeChoiceName = this.changeChoiceName.bind(this);
@@ -26,15 +26,12 @@ export default class QuestionCreateComponent extends Component{
              {item}
          </li>)   
         })
-        console.log('choiceDatatable :', choiceDatatable);
         this.setState({choices:this.state.choices,addChoiceName:'',choiceDatatable:choiceDatatable})
     }
     changeQuestionName(event){
-    console.log('event :', event);
         this.setState({questionName:event.target.value})
     }
     changeChoiceName(event){
-    console.log('event :', event);
         this.setState({addChoiceName:event.target.value})
     }
     saveQuestion(){
