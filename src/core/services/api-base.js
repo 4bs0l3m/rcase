@@ -1,4 +1,5 @@
 import {ResponseBody} from '../models/response-body'
+import {errorHandler} from '../utils/error-handle'
 export class ApiBase{
     constructor(){
         
@@ -23,7 +24,7 @@ export class ApiBase{
 
         })
         .catch(err=>{
-            
+            errorHandler(err);
         })
     }
     post(root,url,params,body){
@@ -47,7 +48,7 @@ export class ApiBase{
 
         })
         .catch(err=>{
-            
+            errorHandler(err);
         })
     }
 }
